@@ -1,0 +1,41 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="230"
+  height="50"
+  viewBox="0 0 230 50"
+>
+  <!-- Green Circle -->
+  <circle cx="25" cy="25" r="20" fill="#000000" />
+
+  <!-- Globe Icon -->
+  <path
+    d="M25 10
+       C18 10 13 16 13 25
+       C13 34 18 40 25 40
+       C32 40 37 34 37 25
+       C37 16 32 10 25 10Z"
+    fill="#FFFFFF"
+  />
+
+  <!-- Vertical Lines -->
+  <path d="M25 10V40" stroke="#000000" stroke-width="2"/>
+  <path d="M18 12C20 20 20 30 18 38" stroke="#000000" stroke-width="2"/>
+  <path d="M32 12C30 20 30 30 32 38" stroke="#000000" stroke-width="2"/>
+
+  <!-- Horizontal Lines -->
+  <path d="M13 25H37" stroke="#000000" stroke-width="2"/>
+  <path d="M15 18H35" stroke="#000000" stroke-width="2"/>
+  <path d="M15 32H35" stroke="#000000" stroke-width="2"/>
+
+  <!-- Institute Name -->
+  <text
+    x="50"
+    y="33"
+    font-size="18"
+    font-weight="700"
+    fill="#000000"
+    font-family="Arial, Helvetica, sans-serif"
+  >
+    SkillHub Academy
+  </text>
+</svg>
