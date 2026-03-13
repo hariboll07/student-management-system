@@ -12,10 +12,10 @@ const StudentDetails = () => {
   const [loading, setLoading] = useState(true);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  const APIURL=useContext(ApiContext)
+  const {API_URL}=useContext(ApiContext)
 
   useEffect(() => {
-    fetch(`${APIURL}/students/${id}`)
+    fetch(`${API_URL}/students/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setStudent(data);

@@ -10,12 +10,12 @@ const Home = ({ searchTerm }) => {
   const [loading, setLoading] = useState(true);
   const [selectedCourse, setSelectedCourse] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const APIURL=useContext(ApiContext)
+  const { API_URL } = useContext(ApiContext);
 
   useEffect(() => {
     setLoading(true);
     if (!selectedCourse || selectedCourse.length === 0) {
-      fetch(`${APIURL}/students`)
+      fetch(`${API_URL}/students`)
         .then((res) => res.json())
         .then((data) => {
           setStudents(data);
@@ -26,9 +26,7 @@ const Home = ({ searchTerm }) => {
           setLoading(false);
         });
     } else {
-      fetch(
-        `${APIURL}/students/course/${encodeURIComponent(selectedCourse)}`,
-      )
+      fetch(`${API_URL}/students/course/${encodeURIComponent(selectedCourse)}`)
         .then((res) => res.json())
         .then((data) => {
           setStudents(data);
@@ -47,7 +45,7 @@ const Home = ({ searchTerm }) => {
         `Are you sure you want to delete this student ${name.toUpperCase()} ?`,
       )
     ) {
-      fetch(`${APIURL}/students/${id}`, {
+      fetch(`${API_URL}/students/${id}`, {
         method: "DELETE",
       }).then(() => {
         setStudents((prev) => prev.filter((s) => s._id !== id));

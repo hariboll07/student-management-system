@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { ApiContext } from "../context/APIcontext";
 
 const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
-  APIURL=useContext(ApiContext)
+  const { API_URL } = useContext(ApiContext);
   const [formData, setFormData] = useState({
     name: student?.name || "",
     email: student?.email || "",
@@ -23,8 +23,8 @@ const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isEdit
-      ? `${APIURL}/students/${student._id}`
-      : `${APIURL}/students`;
+      ? `${API_URL}/students/${student._id}`
+      : `${API_URL}/students`;
 
     const method = isEdit ? "PUT" : "POST";
     try {
@@ -38,7 +38,7 @@ const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         onStudentAdded(data.student || data);
         onClose();
       }
@@ -146,7 +146,7 @@ const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
           type="submit"
           className="px-4 py-2 bg-[#517551] text-white rounded-md hover:bg-[#3f5d3f]"
         >
-          {isEdit?'Update Student':'Add Student'}
+          {isEdit ? "Update Student" : "Add Student"}
         </button>
       </div>
     </form>

@@ -9,8 +9,8 @@ import closeIcon from "../assets/closeIcon.svg";
 const NavBar = ({ searchTerm, setSearchTerm }) => {
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Experience", path: "/experience" },
-    { name: "About", path: "/about" },
+    { name: "Experience", path: "/" },
+    { name: "About", path: "/" },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
