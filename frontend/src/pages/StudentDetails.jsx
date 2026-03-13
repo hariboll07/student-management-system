@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import DefaultImage from "../assets/default.jpg";
 import Form from "../components/Form";
+import { useContext } from "react";
+import { ApiContext } from "../context/APIcontext";
 const StudentDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -10,8 +12,10 @@ const StudentDetails = () => {
   const [loading, setLoading] = useState(true);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
+  const APIURL=useContext(ApiContext)
+
   useEffect(() => {
-    fetch(`http://localhost:5000/students/${id}`)
+    fetch(`${APIURL}/students/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setStudent(data);

@@ -1,7 +1,10 @@
 // src/components/Form.jsx
 import React, { useState } from "react";
+import { useContext } from "react";
+import { ApiContext } from "../context/APIcontext";
 
 const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
+  APIURL=useContext(ApiContext)
   const [formData, setFormData] = useState({
     name: student?.name || "",
     email: student?.email || "",
@@ -20,8 +23,8 @@ const Form = ({ onClose, onStudentAdded, student, isEdit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isEdit
-      ? `http://localhost:5000/students/${student._id}`
-      : "http://localhost:5000/students";
+      ? `${APIURL}/students/${student._id}`
+      : `${APIURL}/students`;
 
     const method = isEdit ? "PUT" : "POST";
     try {

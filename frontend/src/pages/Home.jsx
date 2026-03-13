@@ -2,17 +2,20 @@
 import { useState, useEffect } from "react";
 import StudentCard from "../components/StudentCard";
 import Form from "../components/Form";
+import { useContext } from "react";
+import { ApiContext } from "../context/APIcontext";
 
 const Home = ({ searchTerm }) => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCourse, setSelectedCourse] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const APIURL=useContext(ApiContext)
 
   useEffect(() => {
     setLoading(true);
     if (!selectedCourse || selectedCourse.length === 0) {
-      fetch("http://localhost:5000/students")
+      fetch(`${APIURL}/students`)
         .then((res) => res.json())
         .then((data) => {
           setStudents(data);
@@ -24,7 +27,7 @@ const Home = ({ searchTerm }) => {
         });
     } else {
       fetch(
-        `http://localhost:5000/students/course/${encodeURIComponent(selectedCourse)}`,
+        `${APIURL}/students/course/${encodeURIComponent(selectedCourse)}`,
       )
         .then((res) => res.json())
         .then((data) => {
@@ -44,7 +47,7 @@ const Home = ({ searchTerm }) => {
         `Are you sure you want to delete this student ${name.toUpperCase()} ?`,
       )
     ) {
-      fetch(`http://localhost:5000/students/${id}`, {
+      fetch(`${APIURL}/students/${id}`, {
         method: "DELETE",
       }).then(() => {
         setStudents((prev) => prev.filter((s) => s._id !== id));
